@@ -27,7 +27,27 @@
             <div class="col-sm-12 col-md-4 mt-3">
                 <div class="card shadow border-0">
                     <div class="card-body padding-0">
-                       <img class="img-fluid" src="moon.png" alt="">
+                        <h5 class="clock-placing" data-countdown="05/09/2019 08:30:00"></h5>
+                        <img class="img-fluid" src="moon.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4 mt-3">
+                <div class="card shadow border-0 fade-p5">
+                    <div class="card-body padding-0">
+                        <h5 class="clock-placing" data-countdown="04/13/2019 06:30:00"></h5>
+                        <img class="img-fluid" src="old.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-4 mt-3">
+                <div class="card shadow border-0">
+                    <div class="card-body padding-0">
+                        <h5 class="clock-placing" data-countdown="04/14/2019 14:09:00"></h5>
+                        <img class="img-fluid" src="new.png" alt="">
                     </div>
                 </div>
             </div>
@@ -35,16 +55,8 @@
             <div class="col-sm-12 col-md-4 mt-3">
                 <div class="card shadow border-0">
                     <div class="card-body padding-0">
-                       <img class="img-fluid" src="old.png" alt="">
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-sm-12 col-md-4 mt-3">
-                <div class="card shadow border-0">
-                    <div class="card-body padding-0">
-                       <img class="img-fluid" src="new.png" alt="">
+                        <h5 class="clock-placing" data-countdown="04/14/2019 07:45:00"></h5>
+                        <img class="img-fluid" src="temple.png" alt="">
                     </div>
                 </div>
             </div>
@@ -52,43 +64,42 @@
             <div class="col-sm-12 col-md-4 mt-3">
                 <div class="card shadow border-0">
                     <div class="card-body padding-0">
-                       <img class="img-fluid" src="temple.png" alt="">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-sm-12 col-md-4 mt-3">
-                <div class="card shadow border-0">
-                    <div class="card-body padding-0">
-                       <img class="img-fluid" src="cook.png" alt="">
+                        <h5 class="clock-placing" data-countdown="04/14/2019 14:42:00"></h5>
+                        <img class="img-fluid" src="cook.png" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mt-3">
                 <div class="card shadow border-0">
                     <div class="card-body padding-0">
-                       <img class="img-fluid" src="work.png" alt="">
+                        <h5 class="clock-placing" data-countdown="04/14/2019 15:54:00"></h5>
+                        <img class="img-fluid" src="work.png" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mt-3">
                 <div class="card shadow border-0">
                     <div class="card-body padding-0">
-                       <img class="img-fluid" src="oiling.png" alt="">
+                        <h5 class="clock-placing" data-countdown="04/17/2019 07:40:00"></h5>
+                        <img class="img-fluid" src="oiling.png" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mt-3">
                 <div class="card shadow border-0">
                     <div class="card-body padding-0">
-                       <img class="img-fluid" src="leaving.png" alt="">
+                        <h5 class="clock-placing" data-countdown="04/18/2019 04:52:00"></h5>
+                        <img class="img-fluid" src="leaving.png" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 mt-3 mb-2">
                 <div class="card shadow border-0">
                     <div class="card-body">
-                        <strong><h6 class="footer">ඔබ වෙත ගෙන එන්නේ <a href="https://getshoutout.com">ShotuOUT</a>වෙතිනි</h5></strong> 
+                        <strong>
+                            <h6 class="footer">ඔබ වෙත ගෙන එන්නේ <a href="https://getshoutout.com">ShotuOUT</a>වෙතිනි
+                                </h5>
+                        </strong>
                     </div>
                 </div>
             </div>
@@ -99,6 +110,25 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript"
+        src="//cdn.rawgit.com/hilios/jQuery.countdown/2.0.4/dist/jquery.countdown.min.js"></script>
+
+    <script>
+
+        $(function () {
+            $('[data-countdown]').each(function () {
+                var $this = $(this), finalDate = $(this).data('countdown');
+                $this.countdown(finalDate, function (event) {
+                    $this.html(event.strftime('දින %D පැය %H විනාඩි %M තත්පර %S'));
+                });
+                $this.on('finish.countdown', function () {
+                    $(this).hide();
+                });
+            });
+        });
+
+    </script>
 
 </body>
 

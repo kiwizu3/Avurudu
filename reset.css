@@ -16,3 +16,14 @@
 a{
     color: #05a464;
 }
+
+.clock-placing {
+    position: absolute;
+    top: 80%;
+    left: 12%;
+    opacity: 0.8;
+}
+
+.fade-p5{
+    opacity: 0.4;
+}

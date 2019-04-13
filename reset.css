@@ -1,0 +1,18 @@
+.custom-bg-header{
+    background-image: url("bg.png");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+.padding-0{
+    padding: 0;
+}
+
+.footer{
+    color: #212121;
+}
+
+a{
+    color: #05a464;
+}

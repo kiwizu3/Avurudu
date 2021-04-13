@@ -20,8 +20,12 @@ a{
 .clock-placing {
     position: absolute;
     top: 80%;
-    left: 12%;
+    left: 6%;
     opacity: 0.8;
+    background: #12a86b;
+    color: #fff;
+    padding: 0.25rem .5rem 0.3rem .5rem;
+    border-radius: 1rem;
 }
 
 .fade-p5{

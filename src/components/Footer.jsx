@@ -9,7 +9,7 @@ const Footer = ({ language }) => {
 
   return (
     <footer className="text-center py-4 footer mt-5">
-      <p className="mb-0">{content[language]} | Powered with ♥️ by <a className="text-decoration-none" href="https://2xdev.com/">2xDev</a></p>
+      <p className="mb-0">{content[language]} <br/> Powered with ♥️ by <a className="text-decoration-none" href="https://2xdev.com/">2xDev</a></p>
     </footer>
   );
 };

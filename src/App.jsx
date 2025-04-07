@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.jsx";
 import NakathList from "./components/NakathList.jsx";
 import Hero from "./components/Hero.jsx";
 import Footer from "./components/Footer.jsx";
+import InstallPrompt from "./components/InstallPrompt.jsx";
 
 const App = () => {
   const [language, setLanguage] = useState("si");
@@ -53,6 +54,7 @@ const App = () => {
         musicOn={musicOn}
         language={language}
       />
+         <InstallPrompt/>
       <div className="container-fluid g-0 px-0">
         <Hero language={language} />
         <NakathList nakathData={nakathData} language={language} showReminder={showReminder} />

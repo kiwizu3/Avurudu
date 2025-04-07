@@ -1,0 +1,157 @@
+@font-face {
+  font-family: 'ganganee';
+  src: url('/fonts/un-ganganee.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'malithi';
+  src: url('/fonts/un-malithi-4.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'arundathee';
+  src: url('/fonts/un-arundathee.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Poppins', sans-serif, ganganee;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.light-text{
+  font-family: 'Poppins', sans-serif, malithi !important;
+}
+
+.font-arundathee{
+  font-family: 'Poppins', sans-serif, arundathee !important;
+}
+
+/* Light Theme */
+body.light {
+  /* background-color: #fff8e1; */
+  color: #3e2723;
+}
+
+body.light .navbar {
+  background-color: #ffffff !important;
+  color: #3e2723;
+}
+
+body.light .navbar .navbar-brand,
+body.light .navbar .btn,
+body.light .navbar i {
+  color: #3e2723 !important;
+}
+
+body.light .masonry-item {
+  background-color: #fff3e0;
+  border-color: #ffe0b2;
+  color: #3e2723;
+}
+
+body.light .btn-outline-secondary:hover i,
+body.light .btn-outline-primary:hover i,
+body.light .btn-outline-success:hover i {
+  color: #3e2723 !important;
+}
+
+/* Dark Theme */
+body.dark {
+  background-color: #1a1a1a;
+  color: #fbe9e7;
+}
+
+body.dark .navbar {
+  background-color: #121212 !important;
+  color: #fbe9e7;
+}
+
+body.dark .navbar .navbar-brand,
+body.dark .navbar .btn,
+body.dark .navbar i {
+  color: #fbe9e7 !important;
+}
+
+body.dark .masonry-item {
+  background-color: #2e2e2e;
+  border-color: #4e342e;
+  color: #fbe9e7;
+}
+
+.masonry-list {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .masonry-list {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 992px) {
+  .masonry-list {
+    column-count: 3;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  border-radius: 0.75rem;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  padding: 1rem;
+}
+
+.masonry-item h3,
+.masonry-item h5 {
+  margin-bottom: 0.5rem;
+  color: inherit;
+}
+
+.masonry-item p {
+  margin: 0;
+  color: inherit;
+}
+
+/* Buttons */
+.btn-outline-primary {
+  border-color: #f57c00;
+  color: #f57c00;
+}
+
+.btn-outline-primary:hover {
+  background-color: #f57c00;
+  color: white;
+}
+
+.btn-outline-secondary {
+  border-color: #ffca28;
+  color: #ffca28;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #ffca28;
+  color: #3e2723;
+}
+
+/* Countdown badge */
+.badge.bg-secondary {
+  background-color: #f57c00 !important;
+  color: white;
+}
+
+.border-gold {
+  border-color: #ffe10040 !important;
+}
+
+.hero-bg{
+  background: url('/images/main-bg.png');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh; /* Adjust height as needed */
+  text-align: center;
+  flex-direction: column;
+  padding: 2rem;
+}

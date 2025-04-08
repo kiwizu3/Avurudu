@@ -15,7 +15,7 @@ const Hero = ({ language }) => {
 
     return (
         <div className="hero-bg">
-            <div className="hero-image-container">
+            <div className="hero-image-container mt-5">
                 <img src="images/hero-image.png" className="hero-image-light" alt="" />
                 <img src="images/hero-image-dark.png" className="hero-image-dark" alt="" />
             </div>

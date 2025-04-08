@@ -29,13 +29,21 @@ const Countdown = ({ targetDate, onReminder }) => {
 
   const { days, hours, minutes, seconds } = timeLeft;
 
-  const parts = [];
-  if (days > 0) parts.push(`${days}d`);
-  if (hours > 0 || days > 0) parts.push(`${hours}h`);
-  if (minutes > 0 || hours > 0 || days > 0) parts.push(`${minutes}m`);
-  parts.push(`${seconds}s`);
-
-  return <h5 className="fw-bold">{parts.join(" ")}</h5>;
+  return (
+    <div className="countdown-container">
+      <TimeBlock value={days} label="days" />
+      <TimeBlock value={hours} label="hrs" />
+      <TimeBlock value={minutes} label="mins" />
+      <TimeBlock value={seconds} label="secs" />
+    </div>
+  );
 };
+
+const TimeBlock = ({ value, label }) => (
+  <div className="time-block">
+    <div className="time-value">{value}</div>
+    <div className="time-label">{label}</div>
+  </div>
+);
 
 export default Countdown;

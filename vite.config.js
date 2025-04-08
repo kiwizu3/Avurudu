@@ -13,7 +13,7 @@ export default {
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
-        theme_color: '#ffcc00',
+        theme_color: '#ffffff',
         icons: [
           {
             src: '/android-chrome-192x192.png',

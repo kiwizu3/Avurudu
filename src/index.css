@@ -100,6 +100,14 @@ body.dark .masonry-item {
   padding: 1rem;
 }
 
+.featured-card{
+  border-radius: 0.75rem;
+}
+
+.ritual-title{
+  color: #ffb700;
+}
+
 .masonry-item h3,
 .masonry-item h5 {
   margin-bottom: 0.5rem;

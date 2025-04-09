@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Hero = ({ language }) => {
     const content = {
         si: {
-            title: "සුභ අලුත් අවුරුද්දක් Hello වේවා!",
+            title: "සුභ අලුත් අවුරුද්දක් වේවා!",
             subtitle: "අලුත් ආරම්භයක සතුට ඔබට...",
         },
         en: {

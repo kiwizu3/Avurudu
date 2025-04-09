@@ -8,20 +8,23 @@ import Footer from "./components/Footer.jsx";
 const App = () => {
   const [language, setLanguage] = useState("si");
   const [theme, setTheme] = useState("light");
-  const [musicOn, setMusicOn] = useState(false);
+  // const [musicOn, setMusicOn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleLanguage = () => setLanguage((prev) => (prev === "si" ? "en" : "si"));
+  
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     document.body.className = newTheme;
   };
-  const toggleMusic = () => {
-    const audio = document.getElementById("festive-audio");
-    musicOn ? audio.pause() : audio.play();
-    setMusicOn(!musicOn);
-  };
+
+  // const toggleMusic = () => {
+  //   const audio = document.getElementById("festive-audio");
+  //   musicOn ? audio.pause() : audio.play();
+  //   setMusicOn(!musicOn);
+  // };
+
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const showReminder = () => {
@@ -47,10 +50,10 @@ const App = () => {
       <Navbar
         toggleLanguage={toggleLanguage}
         toggleTheme={toggleTheme}
-        toggleMusic={toggleMusic}
+        // toggleMusic={toggleMusic}
         toggleMenu={toggleMenu}
         menuOpen={menuOpen}
-        musicOn={musicOn}
+        // musicOn={musicOn}
         language={language}
       />
       <div className="container-fluid g-0 px-0">

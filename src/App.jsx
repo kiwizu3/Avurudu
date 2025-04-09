@@ -41,7 +41,7 @@ const App = () => {
   }, []);
 
   const title = {
-    si: "අලුත් අවුරුදු Hello නැකෑත්",
+    si: "අලුත් අවුරුදු නැකෑත්",
     en: "Sinhala Avurudu Rituals",
   };
 

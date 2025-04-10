@@ -1,20 +1,41 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Countdown from "./Countdown.jsx";
 
 const NakathList = ({ nakathData, language, showReminder }) => {
+  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [overflowingStates, setOverflowingStates] = useState({});
+  const descriptionRefs = useRef({});
+  const measuredHeights = useRef({});
+
   const now = new Date();
 
-  // Sort all events by time ascending
   const sorted = [...nakathData].sort((a, b) => new Date(a.time) - new Date(b.time));
-
-  // Split into upcoming and past
   const upcoming = sorted.filter(event => new Date(event.time) > now);
   const past = sorted.filter(event => new Date(event.time) <= now);
 
-  // Take the closest upcoming event as "featured"
   const featured = upcoming.length > 0 ? upcoming[0] : null;
   const rest = [...upcoming.slice(1), ...past];
+
+  const toggleExpand = (index) => {
+    setExpandedIndex(prev => (prev === index ? null : index));
+  };
+
+  useEffect(() => {
+    const newOverflowStates = {};
+
+    Object.entries(descriptionRefs.current).forEach(([index, el]) => {
+      if (el) {
+        const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
+        const maxHeight = lineHeight * 2;
+
+        newOverflowStates[index] = el.scrollHeight > maxHeight;
+        measuredHeights.current[index] = el.scrollHeight;
+      }
+    });
+
+    setOverflowingStates(newOverflowStates);
+  }, [language, nakathData, expandedIndex]);
 
   return (
     <div className="px-custom my-4">
@@ -37,18 +58,52 @@ const NakathList = ({ nakathData, language, showReminder }) => {
       <div className="masonry-list mt-n4">
         {rest.map((item, index) => {
           const isPast = new Date(item.time) <= now;
+          const isExpanded = expandedIndex === index;
+          const description = item[language].description;
+
           return (
             <div
               key={index}
               className={`masonry-item card border-2 border-gold mb-3 p-3 ${isPast ? "opacity-50" : ""}`}
             >
               <h3 className="mb-3 ritual-title">{item[language].title}</h3>
-              <p>{item[language].description}</p>
-              {item.time && (
-                <div className="mt-2">
-                  <Countdown targetDate={item.time} onReminder={showReminder} />
-                </div>
+
+              <motion.div
+                initial={false}
+                animate={{
+                  height: isExpanded ? measuredHeights.current[index] || "auto" : 48,
+                  opacity: isExpanded ? 1 : 0.9,
+                  pointerEvents: isExpanded ? "auto" : "none",
+                }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                style={{ overflow: "hidden" }}
+              >
+                <motion.p
+                  className={`description ${isExpanded ? "expanded" : "truncated"}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  ref={(el) => {
+                    descriptionRefs.current[index] = el;
+                  }}
+                >
+                  {description}
+                </motion.p>
+              </motion.div>
+
+              {overflowingStates[index] && (
+                <span
+                  className="see-more-link"
+                  onClick={() => toggleExpand(index)}
+                >
+                  {isExpanded ? "See less" : "See more"}
+                </span>
               )}
+
+              <div className="mt-2">
+                <Countdown targetDate={item.time} onReminder={showReminder} />
+              </div>
             </div>
           );
         })}

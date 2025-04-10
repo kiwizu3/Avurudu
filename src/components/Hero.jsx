@@ -15,12 +15,12 @@ const Hero = ({ language }) => {
 
     return (
         <div className="hero-bg">
-            <div className="hero-image-container mt-5">
+            <div className="hero-image-container mt-6">
                 <img src="images/hero-image.png" className="hero-image-light" alt="" />
                 <img src="images/hero-image-dark.png" className="hero-image-dark" alt="" />
             </div>
             <motion.div
-                className="text-center py-5"
+                className="text-center pb-5 pt-lg-5 pt-md-2 pt-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}

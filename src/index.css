@@ -270,7 +270,7 @@ body.dark .hero-image-light {
   display: flex;
   flex-direction: column;
   align-items: start;
-  min-width: 3rem;
+  min-width: 4rem;
 }
 
 .time-value {

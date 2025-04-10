@@ -153,12 +153,12 @@ body.dark .masonry-item {
 body.light .hero-bg,
 body.dark .hero-bg {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-  text-align: center;
   flex-direction: column;
-  padding: 3rem 1rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  text-align: center;
+  padding: 2rem 1rem;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -209,7 +209,7 @@ body.dark .hero-image-light {
   body.light .hero-bg,
   body.dark .hero-bg {
     background: none;
-    padding: 2rem 1rem;
+    padding: 0 2rem;
   }
 
   .hero-image-container {
@@ -285,4 +285,34 @@ body.dark .hero-image-light {
   text-transform: uppercase;
   letter-spacing: 1px;
   opacity: 0.7;
+}
+
+.description.truncated {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description.expanded {
+  display: block;
+}
+
+.see-more-link {
+  display: inline-block;
+  color: #f57c00;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.see-more-link:hover {
+  color: #ff9800;
+}
+
+.mt-6{
+  margin-top: 6rem;
 }

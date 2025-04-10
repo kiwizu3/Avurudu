@@ -63,7 +63,7 @@ const NakathList = ({ nakathData, language, showReminder }) => {
           transition={{ duration: 0.6 }}
         >
           <span className="position-absolute bottom-0 end-0 pe-2 pb-2 fs-4">🔥</span>
-          <h2 className="mb-3 ritual-title">{featured[language].title}</h2>
+          <h2 className={`mb-3 ritual-title ${language === "en" && "fw-bold"}`}>{featured[language].title}</h2>
           <p className="lead">{featured[language].description}</p>
           <Countdown targetDate={featured.time} onReminder={showReminder} />
         </motion.div>
@@ -89,7 +89,7 @@ const NakathList = ({ nakathData, language, showReminder }) => {
                 transition={animateCards ? { duration: 0.3 } : undefined}
                 className={`masonry-item card border-2 border-gold mb-3 p-3 ${isPast ? "opacity-50" : ""}`}
               >
-                <h3 className="mb-3 ritual-title">{item[language].title}</h3>
+                <h3 className={`mb-3 ritual-title ${language === "en" && "fw-bold"}`}>{item[language].title}</h3>
 
                 <motion.div
                   initial={false}

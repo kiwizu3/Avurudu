@@ -275,13 +275,13 @@ body.dark .hero-image-light {
 
 .time-value {
   color: #ffb700;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   line-height: 1;
 }
 
 .time-label {
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   opacity: 0.7;

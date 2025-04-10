@@ -153,13 +153,13 @@ body.dark .masonry-item {
 body.light .hero-bg,
 body.dark .hero-bg {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-  text-align: center;
   flex-direction: column;
-  padding: 3rem 1rem;
-  background-size: contain;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  text-align: center;
+  padding: 2rem 1rem;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -209,7 +209,7 @@ body.dark .hero-image-light {
   body.light .hero-bg,
   body.dark .hero-bg {
     background: none;
-    padding: 2rem 1rem;
+    padding: 0 2rem;
   }
 
   .hero-image-container {
@@ -301,12 +301,11 @@ body.dark .hero-image-light {
 
 .see-more-link {
   display: inline-block;
-  margin-top: 0.5rem;
   color: #f57c00;
   font-weight: 500;
   font-size: 0.875rem;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 

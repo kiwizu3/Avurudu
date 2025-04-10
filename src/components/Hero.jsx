@@ -15,17 +15,19 @@ const Hero = ({ language }) => {
 
     return (
         <div className="hero-bg">
-            <div className="hero-image-container mt-6">
+            <div className="hero-image-container">
                 <img src="images/hero-image.png" className="hero-image-light" alt="" />
                 <img src="images/hero-image-dark.png" className="hero-image-dark" alt="" />
             </div>
             <motion.div
-                className="text-center pb-5 pt-lg-5 pt-md-2 pt-0"
+                className="text-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <h1 className={`display-2 font-arundathee ${language === 'en'? "fw-bold": ""}`}>{content[language].title}</h1>
+                <h1 className={`display-2 font-arundathee ${language === 'en' ? "fw-bold" : ""}`}>
+                    {content[language].title}
+                </h1>
                 <p className="lead">{content[language].subtitle}</p>
             </motion.div>
         </div>

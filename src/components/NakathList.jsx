@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Countdown from "./Countdown.jsx";
 
 const NakathList = ({ nakathData, language, showReminder }) => {
@@ -7,12 +7,43 @@ const NakathList = ({ nakathData, language, showReminder }) => {
   const [overflowingStates, setOverflowingStates] = useState({});
   const descriptionRefs = useRef({});
   const measuredHeights = useRef({});
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [animateCards, setAnimateCards] = useState(true);
 
-  const now = new Date();
+  // ⏱ Update every second
+  useEffect(() => {
+    const interval = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // ❌ Disable animations briefly on language switch
+  useEffect(() => {
+    setAnimateCards(false);
+    const timeout = setTimeout(() => setAnimateCards(true), 100);
+    return () => clearTimeout(timeout);
+  }, [language]);
+
+  // 📏 Recalculate height & overflow on updates
+  useLayoutEffect(() => {
+    requestAnimationFrame(() => {
+      const newOverflowStates = {};
+      Object.entries(descriptionRefs.current).forEach(([index, el]) => {
+        if (el) {
+          const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
+          const maxHeight = lineHeight * 2;
+          const scrollHeight = el.scrollHeight;
+
+          newOverflowStates[index] = scrollHeight > maxHeight;
+          measuredHeights.current[index] = scrollHeight;
+        }
+      });
+      setOverflowingStates(newOverflowStates);
+    });
+  }, [language, nakathData, expandedIndex]);
 
   const sorted = [...nakathData].sort((a, b) => new Date(a.time) - new Date(b.time));
-  const upcoming = sorted.filter(event => new Date(event.time) > now);
-  const past = sorted.filter(event => new Date(event.time) <= now);
+  const upcoming = sorted.filter(event => new Date(event.time) > currentTime);
+  const past = sorted.filter(event => new Date(event.time) <= currentTime);
 
   const featured = upcoming.length > 0 ? upcoming[0] : null;
   const rest = [...upcoming.slice(1), ...past];
@@ -20,22 +51,6 @@ const NakathList = ({ nakathData, language, showReminder }) => {
   const toggleExpand = (index) => {
     setExpandedIndex(prev => (prev === index ? null : index));
   };
-
-  useEffect(() => {
-    const newOverflowStates = {};
-
-    Object.entries(descriptionRefs.current).forEach(([index, el]) => {
-      if (el) {
-        const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
-        const maxHeight = lineHeight * 2;
-
-        newOverflowStates[index] = el.scrollHeight > maxHeight;
-        measuredHeights.current[index] = el.scrollHeight;
-      }
-    });
-
-    setOverflowingStates(newOverflowStates);
-  }, [language, nakathData, expandedIndex]);
 
   return (
     <div className="px-custom my-4">
@@ -56,57 +71,68 @@ const NakathList = ({ nakathData, language, showReminder }) => {
 
       {/* Masonry List */}
       <div className="masonry-list mt-n4">
-        {rest.map((item, index) => {
-          const isPast = new Date(item.time) <= now;
-          const isExpanded = expandedIndex === index;
-          const description = item[language].description;
+        <AnimatePresence>
+          {rest.map((item, index) => {
+            const isPast = new Date(item.time) <= currentTime;
+            const isExpanded = expandedIndex === index;
+            const description = item[language].description;
 
-          return (
-            <div
-              key={index}
-              className={`masonry-item card border-2 border-gold mb-3 p-3 ${isPast ? "opacity-50" : ""}`}
-            >
-              <h3 className="mb-3 ritual-title">{item[language].title}</h3>
+            const Wrapper = animateCards ? motion.div : "div";
 
-              <motion.div
-                initial={false}
-                animate={{
-                  height: isExpanded ? measuredHeights.current[index] || "auto" : 48,
-                  opacity: isExpanded ? 1 : 0.9,
-                  pointerEvents: isExpanded ? "auto" : "none",
-                }}
-                transition={{ duration: 0.2, ease: "easeInOut" }}
-                style={{ overflow: "hidden" }}
+            return (
+              <Wrapper
+                key={item.time}
+                layout={animateCards ? true : undefined}
+                initial={animateCards ? { opacity: 0, y: -10 } : undefined}
+                animate={animateCards ? { opacity: 1, y: 0 } : undefined}
+                exit={animateCards ? { opacity: 0, y: 10 } : undefined}
+                transition={animateCards ? { duration: 0.3 } : undefined}
+                className={`masonry-item card border-2 border-gold mb-3 p-3 ${isPast ? "opacity-50" : ""}`}
               >
-                <motion.p
-                  className={`description ${isExpanded ? "expanded" : "truncated"}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  ref={(el) => {
-                    descriptionRefs.current[index] = el;
+                <h3 className="mb-3 ritual-title">{item[language].title}</h3>
+
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: isExpanded ? measuredHeights.current[index] || "auto" : 48,
+                    opacity: isExpanded ? 1 : 0.9,
+                    pointerEvents: isExpanded ? "auto" : "none",
                   }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                  style={{ overflow: "hidden" }}
                 >
-                  {description}
-                </motion.p>
-              </motion.div>
+                  <motion.p
+                    className={`description ${isExpanded ? "expanded" : "truncated"}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    ref={(el) => {
+                      descriptionRefs.current[index] = el;
+                    }}
+                  >
+                    {description}
+                  </motion.p>
+                </motion.div>
 
-              {overflowingStates[index] && (
-                <span
-                  className="see-more-link"
-                  onClick={() => toggleExpand(index)}
-                >
-                  {isExpanded ? "See less" : "See more"}
-                </span>
-              )}
+                {overflowingStates[index] && (
+                  <span
+                    className="see-more-link"
+                    onClick={() => toggleExpand(index)}
+                  >
+                    {language === "en"
+                      ? isExpanded ? "See less" : "See more"
+                      : isExpanded ? "සඟවන්න" : "තවත් බලන්න"}
+                  </span>
+                )}
 
-              <div className="mt-2">
-                <Countdown targetDate={item.time} onReminder={showReminder} />
-              </div>
-            </div>
-          );
-        })}
+                <div className="mt-2">
+                  <Countdown targetDate={item.time} onReminder={showReminder} />
+                </div>
+              </Wrapper>
+            );
+          })}
+        </AnimatePresence>
       </div>
     </div>
   );

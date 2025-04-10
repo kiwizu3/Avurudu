@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 const Countdown = ({ targetDate, onReminder }) => {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+  const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(targetDate));
 
-  function getTimeLeft() {
+  function getTimeLeft(date) {
     const now = new Date();
-    const diff = new Date(targetDate) - now;
+    const diff = new Date(date) - now;
     if (diff <= 0) return null;
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -17,15 +17,18 @@ const Countdown = ({ targetDate, onReminder }) => {
   }
 
   useEffect(() => {
+    setTimeLeft(getTimeLeft(targetDate));
+
     const interval = setInterval(() => {
-      const newTime = getTimeLeft();
+      const newTime = getTimeLeft(targetDate);
       setTimeLeft(newTime);
       if (newTime && newTime.total < 5 * 60 * 1000) onReminder?.();
     }, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
-  if (!timeLeft) return <span className="text-danger">Occurred</span>;
+    return () => clearInterval(interval);
+  }, [targetDate, onReminder]);
+
+  if (!timeLeft) return <small className="text-danger text-sm">Occurred</small>;
 
   const { days, hours, minutes, seconds } = timeLeft;
 

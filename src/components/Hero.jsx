@@ -16,8 +16,8 @@ const Hero = ({ language }) => {
     return (
         <div className="hero-bg">
             <div className="hero-image-container">
-                <img src="images/hero-image.png" className="hero-image-light" alt="" />
-                <img src="images/hero-image-dark.png" className="hero-image-dark" alt="" />
+                <img src="images/hero-image.png" className="hero-image-light" alt="Sri Lankan Avurudu Celebration Banner"  />
+                <img src="images/hero-image-dark.png" className="hero-image-dark" alt="Sri Lankan Avurudu Celebration Banner"  />
             </div>
             <motion.div
                 className="text-center"

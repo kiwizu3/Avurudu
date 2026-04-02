@@ -3,9 +3,22 @@ import React, { useEffect, useState } from "react";
 const Countdown = ({ targetDate, onReminder }) => {
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(targetDate));
 
-  function getTimeLeft(date) {
+  // Convert a "YYYY-MM-DDTHH:mm:ss" string in Sri Lanka time (UTC+5:30) to a UTC Date
+  function toSriLankaDate(dateStr) {
+    // If it's already a full ISO string with offset, use as-is
+    if (dateStr.includes("+") || dateStr.endsWith("Z")) {
+      return new Date(dateStr);
+    }
+    // Otherwise, treat as Sri Lanka local time (UTC+5:30)
+    // Append the SL offset explicitly
+    return new Date(dateStr + "+05:30");
+  }
+
+  function getTimeLeft(targetDate) {
     const now = new Date();
-    const diff = new Date(date) - now;
+    const target = typeof targetDate === "string" ? toSriLankaDate(targetDate) : targetDate;
+    const diff = target - now;
+
     if (diff <= 0) return null;
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));

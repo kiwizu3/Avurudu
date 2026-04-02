@@ -10,6 +10,11 @@ const NakathList = ({ nakathData, language, showReminder }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [animateCards, setAnimateCards] = useState(true);
 
+  function toSriLankaDate(dateStr) {
+    if (dateStr.includes("+") || dateStr.endsWith("Z")) return new Date(dateStr);
+    return new Date(dateStr + "+05:30");
+  }
+
   // ⏱ Update every second
   useEffect(() => {
     const interval = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -41,9 +46,13 @@ const NakathList = ({ nakathData, language, showReminder }) => {
     });
   }, [language, nakathData, expandedIndex]);
 
-  const sorted = [...nakathData].sort((a, b) => new Date(a.time) - new Date(b.time));
-  const upcoming = sorted.filter(event => new Date(event.time) > currentTime);
-  const past = sorted.filter(event => new Date(event.time) <= currentTime);
+  // const sorted = [...nakathData].sort((a, b) => new Date(a.time) - new Date(b.time));
+  // const upcoming = sorted.filter(event => new Date(event.time) > currentTime);
+  // const past = sorted.filter(event => new Date(event.time) <= currentTime);
+
+  const sorted = [...nakathData].sort((a, b) => toSriLankaDate(a.time) - toSriLankaDate(b.time));
+  const upcoming = sorted.filter(event => toSriLankaDate(event.time) > currentTime);
+  const past = sorted.filter(event => toSriLankaDate(event.time) <= currentTime);
 
   const featured = upcoming.length > 0 ? upcoming[0] : null;
   const rest = [...upcoming.slice(1), ...past];
@@ -73,7 +82,7 @@ const NakathList = ({ nakathData, language, showReminder }) => {
       <div className="masonry-list mt-n4">
         <AnimatePresence>
           {rest.map((item, index) => {
-            const isPast = new Date(item.time) <= currentTime;
+            const isPast = toSriLankaDate(item.time) <= currentTime;
             const isExpanded = expandedIndex === index;
             const description = item[language].description;
 

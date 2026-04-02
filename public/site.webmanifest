@@ -1,11 +1,11 @@
 {
-    "name": "Avurudu 2025",
+    "name": "Avurudu 2026",
     "short_name": "Avurudu",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#ffcc00",
-    "description": "Celebrate Sinhala & Tamil New Year 2025 with accurate Nakath times and traditions.",
+    "description": "Celebrate Sinhala & Tamil New Year 2026 with accurate Nakath times and traditions.",
     "icons": [
       {
         "src": "/android-chrome-192x192.png",

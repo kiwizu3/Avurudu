@@ -16,7 +16,7 @@ const Navbar = ({ toggleLanguage, toggleTheme, toggleMusic, musicOn, language })
       <div className="container-fluid g-0 d-flex justify-content-between align-items-center">
         <span className={`navbar-brand fs-4 ps-2 ${language === "en" && "fw-bold"}`}>
           {language === "si" ? titles.si.title : titles.en.title} 
-          {/* <span className="fw-bold">2025</span> */}
+          {/* <span className="fw-bold">2026</span> */}
           </span>
 
         <div className="d-flex align-items-center">

@@ -71,7 +71,9 @@ const NakathList = ({ nakathData, language, showReminder }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="position-absolute bottom-0 end-0 pe-2 pb-2 fs-4">🔥</span>
+          <span className="position-absolute bottom-0 end-0 pe-4 pb-4 fs-4">
+            <img src="images/fire.svg"/>
+          </span>
           <h2 className={`mb-3 ritual-title ${language === "en" && "fw-bold"}`}>{featured[language].title}</h2>
           <p className="lead">{featured[language].description}</p>
           <Countdown targetDate={featured.time} onReminder={showReminder} />

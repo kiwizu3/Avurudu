@@ -34,36 +34,36 @@ const nakathData = [
       }
     },
     {
-      time: "2026-04-14T10:41:00",
+      time: "2026-04-14T10:51:00",
       si: {
         title: "ආහාර පිසීම",
-        description: "අප්‍රේල් මස 14 වැනි අගහරුවාදා උදේ 10.41 ට රක්ත වර්ණ වස්ත්‍රාභරණයෙන් සැරසී දකුණු දිශාව බලා ළිප් බැඳ ගිනි මොළවා කිරිබතක්ද කැවිලි වර්ගයක්ද දී කිරි සහ විලඳ ද පිළියෙල කර ගැනීම මැනවි."
+        description: "අප්‍රේල් මස 14 වැනි අගහරුවාදා උදේ 10.51 ට රක්ත වර්ණ වස්ත්‍රාභරණයෙන් සැරසී දකුණු දිශාව බලා ළිප් බැඳ ගිනි මොළවා කිරිබතක්ද කැවිලි වර්ගයක්ද දී කිරි සහ විලඳ ද පිළියෙල කර ගැනීම මැනවි."
       },
       en: {
         title: "Preparation of the First Meal",
-        description: "April 14 at 10:41 AM. Wearing red-colored attire and facing the south, people light the hearth, prepare kiribath (milk rice), sweetmeats, and other traditional food, and boil fresh milk to symbolize prosperity."
+        description: "April 14 at 10:51 AM. Wearing red-colored attire and facing the south, people light the hearth, prepare kiribath (milk rice), sweetmeats, and other traditional food, and boil fresh milk to symbolize prosperity."
       }
     },
     {
-      time: "2026-04-14T12:05:00",
+      time: "2026-04-14T12:06:00",
       si: {
         title: "වැඩ ඇල්ලීම, ගනුදෙනු, ආහාර අනුභවය",
-        description: "අප්‍රේල් මස 14 වැනි අඟහරුවාදා අපර භාග 12.05 ට රක්ත වර්ණ වස්ත්‍රාභරණයෙන් සැරසී දකුණු දිශාව බලා සියලු වැඩ අල්ලා ගනුදෙනු කොට ආහාර අනුභව කිරීම මැනවි"
+        description: "අප්‍රේල් මස 14 වැනි අඟහරුවාදා අපර භාග 12.06 ට රක්ත වර්ණ වස්ත්‍රාභරණයෙන් සැරසී දකුණු දිශාව බලා සියලු වැඩ අල්ලා ගනුදෙනු කොට ආහාර අනුභව කිරීම මැනවි"
       },
       en: {
         title: "Starting Work, Transactions, and First Meal",
-        description: "April 14 at 12:05 PM. Wearing red-colored clothing while facing south, people resume work, engage in financial transactions, and share the first meal of the year, ensuring prosperity and good fortune."
+        description: "April 14 at 12:06 PM. Wearing red-colored clothing while facing south, people resume work, engage in financial transactions, and share the first meal of the year, ensuring prosperity and good fortune."
       }
     },
     {
-      time: "2026-04-15T06:54:00",
+      time: "2026-04-15T06:55:00",
       si: {
         title: "හිසතෙල් ගෑම",
-        description: "අප්‍රේල් මස 15 වැනි බදාදා උදේ 09.04 ට පච්ච හෙවත් කොල පැහැති වස්ත්‍රාභරණයෙන් සැරසී නැගෙනහිර දිශාව බලා හිසට කොහොඹ පත් ද පයට කොළොන් පත් ද තබා කොහොඹ පත් යුෂ මිශ්‍ර නානු හා තෙල් ගා ස්නානය කිරීම මැනවි."
+        description: "අප්‍රේල් මස 15 වැනි බදාදා උදේ 06.55 ට පච්ච හෙවත් කොල පැහැති වස්ත්‍රාභරණයෙන් සැරසී නැගෙනහිර දිශාව බලා හිසට කොහොඹ පත් ද පයට කොළොන් පත් ද තබා කොහොඹ පත් යුෂ මිශ්‍ර නානු හා තෙල් ගා ස්නානය කිරීම මැනවි."
       },
       en: {
         title: "Anointing of Oil",
-        description: "April 16 at 9:04 AM. Dressed in green-colored attire, people face north and anoint their heads with herbal oil infused with Kohomba (neem) leaves while placing Haldu (Kolon) leaves under their feet."
+        description: "April 16 at 6:55 AM. Dressed in green-colored attire, people face north and anoint their heads with herbal oil infused with Kohomba (neem) leaves while placing Haldu (Kolon) leaves under their feet."
       }
     },
     {
